@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <title>To Do App</title>
+
+    <!--FONT AWESOME-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div> <!-- Content Container -->
+        <div>
+            <div>
+                <img src="" alt="profile pic not found">
+            </div>
+            <div>
+                <div>
+                    <input name="user" type="text" placeholder="Enter a Username">
+                    <h1>
+                        <span id="username"></span><br>
+                        Welcome To My To Do App
+                    </h1>
+                </div>
+                <div id="Date"></div>
+            </div>
+        </div>
+
+        <!-- Motivation section -->
+        <div>
+            <div id="Quote"></div>
+            <span id="name"></span>
+            <div id="G_Quote"></div>
+        </div>
+
+        <!-- To do list Section -->
+        <div> <!-- Container -->
+            <div>
+                <div>To Do List</div>
+                <div>
+                <span id="A_list">
+                    Add a Task
+                </span>
+                <span id="R_list">
+                    Remove a Task
+                </span>
+                </div>
+            </div>
+
+            <div>
+                <textarea placeholder="Enter your task"></textarea>
+                <div id="add">Add</div>
+                <div>
+                <input type="time" name="Time" placeholder="Input Time">
+                <select>
+                    <option id="am">AM</option>
+                    <option id="pm">PM</option>
+                </select>
+                </div>
+            </div>
+            
+            <div> <!-- container for added task -->
+                <!-- first task -->
+                <div class="taskholder">
+                    <div>
+                    <h3 id="task"></h3>
+                    </div>
+
+                    <div>
+                    <div id="time"></div>
+                    <div id="checked"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="completed"><!-- container for completed task --></div>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+npm install -D tailwindcss@3
+npx tailwindcss init
+
+/** @type {import('tailwindcss').Config} */
+ export default {
+   content: ["./src/**/*.{html,js}"],
+    theme: {
+      extend: {},
+    },
+    plugins: [],
+  }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+npx tailwindcss -i ./src/input.css -o ./src/output.css --watch
+
+<link href="./src/output.css" rel="stylesheet">
