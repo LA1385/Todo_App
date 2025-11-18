@@ -6,32 +6,52 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <title>To Do App</title>
 
+    <link href="./src/output.css" rel="stylesheet">
+    <script src="TW4.js"></script>
+
     <!--FONT AWESOME-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-<body>
-    <div> <!-- Content Container -->
-        <div>
-            <div>
-                <img src="" alt="profile pic not found">
-            </div>
-            <div>
-                <div>
-                    <input name="user" type="text" placeholder="Enter a Username">
-                    <h1>
-                        <span id="username"></span><br>
-                        Welcome To My To Do App
-                    </h1>
+<body class="m-0 p-0 font-mono">
+    <div class="bg-zinc-300 p-4"> <!-- Content Container -->
+        <div class="flex justify-between items-center">
+            <div class="flex justify-start gap-x-2 items-center">
+                <div class="p-2 rounded-full bg-white">
+                    <img class=" h-10 w-10 " src="images/default.png" alt="profile pic not found" id="profile">
                 </div>
-                <div id="Date"></div>
+                <div>
+                    <div id="identity">
+                        <div>
+                            <input name="user" id="user" type="text" placeholder="Enter a Username" class="outline-none border-none text-sm bg-zinc-300">
+                        </div>
+                        <label class="text-sm">Male</label>
+                        <input type="radio" name="gender" value="male" class="text-sm">
+                        <label class="text-sm">Female</label>
+                        <input type="radio" name="gender" value="female" class="text-sm"><br>
+                    </div>
+                    <div class="hidden"id="nameField">
+                        <h1 class="text-xs text-gray-800">
+                            <span id="username" class="text-lg font-bold"></span><br>
+                            <a href="#" class="underline italic" id="c_username">change username</a>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+                
+            
+            <div>
+                <div class="hidden font-semibold text-xs text-black" id="Date"></div>
+                <button class="bg-black p-2 text-sm text-white font-semibold rounded-full" id="enter">Enter</button>
             </div>
         </div>
 
         <!-- Motivation section -->
-        <div>
-            <div id="Quote"></div>
-            <span id="name"></span>
-            <div id="G_Quote"></div>
+        <div class="bg-[url(images/background.png)] bg-cover bg-center bg-no-repeat h-32 p-3 rounded-lg my-3 flex flex-col justify-center items-center">
+            <div id="Quote" class="text-sm text-center text-white font-semibold"></div>
+            <span id="name" class="text-sm text-white font-semibold"></span>
+            <div id="G_Quote" class="bg-white p-1 rounded-full">
+                Generate Quote
+            </div>
         </div>
 
         <!-- To do list Section -->
@@ -78,5 +98,7 @@
         </div>
 
     </div>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
