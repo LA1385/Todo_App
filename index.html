@@ -46,55 +46,53 @@
         </div>
 
         <!-- Motivation section -->
-        <div class="bg-[url(images/background.png)] bg-cover bg-center bg-no-repeat h-32 p-3 rounded-lg my-3 flex flex-col justify-center items-center">
-            <div id="Quote" class="text-sm text-center text-white font-semibold"></div>
-            <span id="name" class="text-sm text-white font-semibold"></span>
+        <div class="bg-my-image bg-cover bg-center bg-no-repeat gap-y-3 p-3 rounded-lg my-3 flex flex-col justify-center items-center">
+            <div id="Quote" class="text-sm text-center text-white font-semibold">Start now. Not because it's easy,but because your future is waiting for the results you keep delaying.</div>
+            <span id="name" class="text-sm text-white font-semibold">~ChatGpt</span>
             <div id="G_Quote" class="bg-white p-1 rounded-full">
                 Generate Quote
             </div>
         </div>
 
         <!-- To do list Section -->
-        <div> <!-- Container -->
-            <div>
-                <div>To Do List</div>
-                <div>
-                <span id="A_list">
-                    Add a Task
+        <div class="flex flex-col gap-y-3"> <!-- Container -->
+            <div class="flex flex-row justify-between items-center">
+                <span class="font-bold text-lg">
+                    To-Do List
                 </span>
-                <span id="R_list">
-                    Remove a Task
-                </span>
-                </div>
             </div>
 
-            <div>
-                <textarea placeholder="Enter your task"></textarea>
-                <div id="add">Add</div>
-                <div>
-                <input type="time" name="Time" placeholder="Input Time">
-                <select>
-                    <option id="am">AM</option>
-                    <option id="pm">PM</option>
-                </select>
+            <div class="flex flex-col gap-y-2 mb-4">
+                <div class="flex flex-col gap-y-2">
+                    <input id="task" placeholder="Enter your task" class="text-sm border border-dashed w-full p-2 border-black outline-none">
+                    <input id="time" type="time" name="Time" placeholder="Input Time" class="text-sm border border-dashed w-full p-2 border-black outline-none">
                 </div>
+
+                <div class="flex justify-center">
+                    <span id="A_task" class="font-semibold text-white bg-black p-2
+                    border border-dashed border-black rounded-full shadow-md">
+                        Add Task
+                    </span>
+                </div>
+
+            <hr class="bg-black w-full h-0.5">
             </div>
             
-            <div> <!-- container for added task -->
+            <div class="flex flex-col gap-y-3 text-white"> <!-- container for added task -->
+                <h2 class="font-bold text-lg text-black ">Uncompleted Task</h2>
                 <!-- first task -->
-                <div class="taskholder">
-                    <div>
-                    <h3 id="task"></h3>
-                    </div>
-
-                    <div>
-                    <div id="time"></div>
-                    <div id="checked"></div>
+                <div  class="flex flex-row justify-between items-center">
+                    <div id="tasks"></div>
+                    <div id="C_time" class="flex flex-col justify-center items-center">    
                     </div>
                 </div>
+            <hr class="bg-black w-full h-0.5">
             </div>
             
-            <div id="completed"><!-- container for completed task --></div>
+            
+            <div id="completed"><!-- container for completed task -->
+
+            </div>
         </div>
 
     </div>
