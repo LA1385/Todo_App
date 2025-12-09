@@ -13,7 +13,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body class="m-0 p-0 font-mono">
-    <div class="bg-zinc-300 p-4"> <!-- Content Container -->
+    <div class="hidden md:flex underline text-blue-950">
+        <span> Sorry this page does not support bigger set of phone</span>
+    </div>
+    <div class="bg-zinc-300 min-h-screen p-4 md:hidden"> <!-- Content Container -->
         <div class="flex justify-between items-center">
             <div class="flex justify-start gap-x-2 items-center">
                 <div class="p-2 rounded-full bg-white">
@@ -73,26 +76,22 @@
                     border border-dashed border-black rounded-full shadow-md">
                         Add Task
                     </span>
+
                 </div>
 
             <hr class="bg-black w-full h-0.5">
             </div>
             
             <div class="flex flex-col gap-y-3 text-white"> <!-- container for added task -->
-                <h2 class="font-bold text-lg text-black ">Uncompleted Task</h2>
+                <h2 class="font-bold text-lg text-black ">Task To Be Done:</h2>
                 <!-- first task -->
-                <div  class="flex flex-row justify-between items-center">
-                    <div id="tasks"></div>
-                    <div id="C_time" class="flex flex-col justify-center items-center">    
-                    </div>
-                </div>
-            <hr class="bg-black w-full h-0.5">
+                <div id="tasks" class="w-full flex flex-col justify-between items-center"></div>    
+                
+                
+                <hr class="bg-black w-full h-0.5">
             </div>
             
             
-            <div id="completed"><!-- container for completed task -->
-
-            </div>
         </div>
 
     </div>

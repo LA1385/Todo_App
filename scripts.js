@@ -20,6 +20,7 @@ const profileImage={
     "female":"images/female.png"
 }
 
+
 // LOAD SAVED DATA WHEN PAGE LOADS
 window.addEventListener("load",() => {
     const savedName=localStorage.getItem("name")
@@ -52,6 +53,7 @@ enterBtn.addEventListener("click",() => {
         if (genderCheck[a].checked){
             localStorage.setItem("gender",genderCheck[a].value)
         }
+        
     }
     if (!name){
         alert("Please Enter a Username and Pick a Gender")
@@ -63,6 +65,7 @@ enterBtn.addEventListener("click",() => {
         nameContainer.classList.add("block");
         date.classList.remove("hidden");
         enterBtn.classList.add("hidden"); 
+        location.reload();
         for (let a=0;a<genderCheck.length;a++){
             if (genderCheck[a].checked && genderCheck[a].value == "male"){
                 profile.src=profileImage.male;
@@ -82,6 +85,7 @@ changeUsername.addEventListener("click",() => {
     date.classList.add("hidden");
     enterBtn.classList.remove("hidden");
     profile.src="images/default.png";
+    
 })
 
 
@@ -90,7 +94,7 @@ var quoteButton = document.getElementById("G_Quote");
 var quoteAuthor = document.getElementById("name");
 var quoteContent = document.getElementById("Quote")
 
-const apiUrl = "https://dummyjson.com/quotes/random";
+const apiUrl = "https://dummyjson.com/quotes/random/motivational";
 
 async function getQuote() {
     try{
@@ -125,49 +129,82 @@ var taskInputed=document.getElementById("task");
 var timeInputed = document.getElementById("time");
 var addTask = document.getElementById("A_task");
 var taskContainer = document.getElementById("tasks");
-var timeContainer = document.getElementById("C_time")
+
 
 addTask.addEventListener("click",() =>{
     let task=taskInputed.value;
     let time=timeInputed.value;
     
-    let savedTask=localStorage.getItem("allTasks");
+    let getName=localStorage.getItem("name");
+    let taskKey="task_" + getName 
+ 
+    let savedTask=localStorage.getItem(taskKey);
     let allTasks=savedTask? JSON.parse(savedTask) :[];
 
     if (task && time){
         allTasks.push({task: task, time:time})
+        localStorage.setItem(taskKey,JSON.stringify(allTasks))
 
-        localStorage.setItem("allTasks",JSON.stringify(allTasks)) || []
-
-        taskContainer.innerHTML += "<div class='bg-black w-72 flex flex-row justify-between items-center p-2 text-white  rounded-md mb-2 '>" +
-        "<div class='flex gap-x-2'>" +
-        "<input type='checkbox' class'task-checkbox'>" +
-        "<li class='list-none text-lg font-semibold'>" + task + "</li>" +
-        "</div>" +
-        " <li class='list-none text-lg font-semibold'>"+ time +"</li>" +
+        taskContainer.innerHTML +=
+        "<div class='task-item w-full bg-black flex flex-row justify-between items-center p-2 text-white rounded-md mb-2 '>" +
+            "<div class='flex'>" +
+                "<li class='list-none w-full text-lg font-semibold'>" + task + "</li>" +
+            "</div>" +
+            "<div class='flex flex-row gap-x-3 justify-center items-center'>"+
+                " <li class='list-none text-lg w-full font-semibold'>"+ time +"</li>" +
+                "<span class='checked_done p-2 bg-white rounded-full text-black text-sm font-semibold'>Done</span>"+
+            "</div>"+
         "</div>";  
 
         taskInputed.value="";
         timeInputed.value="";
     }
     else{
-        console.log("Ensure you fill in both,You need to be time conscious you know.")
+        alert("Ensure you fill in both,You need to be time conscious you know.")
     }
 })
 // Retaining the task addded when reload
-window.addEventListener("load",() => {
+function loadWindow() {
+    window.addEventListener("load", () => {
 
-    let savedTask = localStorage.getItem("allTasks");
-    let allTasks = savedTask ? JSON.parse(savedTask) : [];
+        let getName = localStorage.getItem("name");
+        let taskKey = "task_" + getName
 
-    allTasks.forEach(item => {
-        taskContainer.innerHTML +=
-         "<div class='bg-black w-72 flex flex-row justify-between items-center p-2 text-white  rounded-md mb-2 '>" +
-         "<div class='flex gap-x-2'>"+
-        "<input type='checkbox' class'task-checkbox'>" +
-        "<li class='list-none text-lg font-semibold'>" + item.task + "</li>" +
-        "</div>"+
-        "<li class='list-none text-lg font-semibold'>" + item.time + "</li>" +
-        "</div>";  
-    });
+        let savedTask = localStorage.getItem(taskKey);
+        let allTasks = savedTask ? JSON.parse(savedTask) : [];
+
+        allTasks.forEach(item => {
+            taskContainer.innerHTML +=
+                "<div class='task-item w-full bg-black flex flex-row justify-between items-center p-2 text-white rounded-md mb-2 '>" +
+                "<div class='flex'>" +
+                "<li class='list-none w-full text-lg font-semibold'>" + item.task + "</li>" +
+                "</div>" +
+                "<div class='flex flex-row gap-x-3 justify-center items-center'>" +
+                " <li class='list-none text-lg w-full font-semibold'>" + item.time + "</li>" +
+                "<span class='p-2 bg-white rounded-full text-black text-sm font-semibold checked_done'>Done</span>"
+                "</div>" +
+                "</div>";
+        });
+    })
+}
+
+loadWindow()
+
+taskContainer.addEventListener("click",(e) => {
+    if (e.target.classList.contains("checked_done")){
+        console.log("element has been clicked")
+        taskDiv = e.target.closest(".task-item")
+        
+        let getName=localStorage.getItem("name");
+        let taskKey="task_" + getName;
+        let savedTask=localStorage.getItem(taskKey);
+        let allTasks=savedTask? JSON.parse(savedTask) : [];
+
+        // find the task to delete
+        let taskIndex=Array.from(taskContainer.children).indexOf(taskDiv)
+        allTasks.splice(taskIndex,1)
+
+        localStorage.setItem(taskKey,JSON.stringify(allTasks));
+        taskDiv.remove()
+    }
 })
