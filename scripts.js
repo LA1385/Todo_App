@@ -94,7 +94,7 @@ var quoteButton = document.getElementById("G_Quote");
 var quoteAuthor = document.getElementById("name");
 var quoteContent = document.getElementById("Quote")
 
-const apiUrl = "https://dummyjson.com/quotes/random/motivational";
+const apiUrl = "https://dummyjson.com/quotes/random";
 
 async function getQuote() {
     try{
